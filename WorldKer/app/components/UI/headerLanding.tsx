@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonLanding from "@/app/components/buttonLanding";
+import ButtonLanding from "@/app/components/UI/buttonLanding";
 
 export default function HeaderLanding() {
   return (
