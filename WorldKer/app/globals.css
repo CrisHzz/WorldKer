@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 5s infinite ease-in-out;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
