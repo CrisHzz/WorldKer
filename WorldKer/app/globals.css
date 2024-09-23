@@ -16,3 +16,6 @@
     50% { opacity: 1; }
   }
   
+  html {
+    scroll-behavior: smooth;
+  }

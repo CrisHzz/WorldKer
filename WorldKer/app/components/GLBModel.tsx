@@ -17,7 +17,7 @@ interface GLBModelProps {
   scale?: [number, number, number];
 }
 
-const GLBModel: React.FC<GLBModelProps> = ({ position = [0, 0, 0], scale = [8, 8, 8] }) => {
+const GLBModel: React.FC<GLBModelProps> = ({ position = [0, 0, 0], scale = [7, 7, 7] }) => {
   return (
     <Canvas
       camera={{
