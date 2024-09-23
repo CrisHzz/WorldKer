@@ -117,16 +117,18 @@ export default function Home(): JSX.Element {
               Empresa!
             </h2>
             <p className="text-[20px] leading-relaxed text-center md:text-left">
-              Somos una <span className="font-bold">Red Social</span> empresarial diseñada exclusivamente para
-              conectar a los miembros de tu empresa. Aquí, la colaboración y el
-              crecimiento profesional encuentran su mejor espacio. La
-              retroalimentación constante y una comunicación fluida son
-              esenciales para crecer. Al compartir experiencias diarias, los
-              empleados aprenden unos de otros, celebran logros y dan una
-              <span className="font-bold"> identidad cultural</span> única a la empresa.
+              Somos una <span className="font-bold">Red Social</span>{" "}
+              empresarial diseñada exclusivamente para conectar a los miembros
+              de tu empresa. Aquí, la colaboración y el crecimiento profesional
+              encuentran su mejor espacio. La retroalimentación constante y una
+              comunicación fluida son esenciales para crecer. Al compartir
+              experiencias diarias, los empleados aprenden unos de otros,
+              celebran logros y dan una
+              <span className="font-bold"> identidad cultural</span> única a la
+              empresa.
             </p>
             <div className="text-center md:text-left">
-              <ButtonLanding href="/demo" text="Subete al cohete" />
+              <ButtonLanding href="/sign-up" text="Subete al cohete" />
             </div>
           </div>
           <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
@@ -147,32 +149,36 @@ export default function Home(): JSX.Element {
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold mb-8">Nuestros Pilares</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Pilar 1</h3>
+              <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
+                <h3 className="text-xl font-semibold mb-4">
+                  Alcanza el exito 🚀{" "}
+                </h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                  commodi aliquam illo magni fugiat perspiciatis consectetur
-                  saepe. Voluptatem accusantium adipisci quidem molestias
-                  laborum repudiandae, omnis, modi temporibus suscipit eveniet
-                  praesentium!
+                  Gracias a la forma de interactuar tus empleados podran
+                  <span className="font-bold"> destacarse </span> entre si
+                  usando los superlikes, aquellos que tengan un mejor
+                  rendimiento o hagan buenas acciones saldran en la pestaña de
+                  destacados.
                 </p>
               </div>
-              <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Pilar 2</h3>
+              <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
+                <h3 className="text-xl font-semibold mb-4">Social 🤝 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi
-                  repellendus molestias debitis veritatis? Distinctio quasi
-                  laboriosam, harum sit expedita sequi ex fuga deserunt suscipit
-                  rerum? Quos illo beatae sint sit.
+                  Tus empleados podran mejorar sus habilidades sociales y
+                  conocer a sus compañeros de trabajo de una manera mas
+                  personal, veran lo que hacen en su dia a dia o quizas ver como
+                  van avazando en su camino hacia el exito empresarial.
                 </p>
               </div>
-              <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Pilar 3</h3>
+              <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
+                <h3 className="text-xl font-semibold mb-4">Diverso ♾️</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maxime earum, fugit molestiae omnis consequatur dignissimos
-                  rem eveniet incidunt, eum officia possimus eaque ad quos.
-                  Pariatur cumque ipsam exercitationem voluptatibus voluptatem.
+                  Nuestro software brinda una propuesta abierta a cualquier
+                  <span className="font-bold"> identidad empresarial</span>{" "}
+                  haciendo que sea fácil su inclusión con cualquiera, la
+                  personalización de perfiles y nuestro identificativo de{" "}
+                  <span className="font-bold">superlikes (Cohetes)</span> hace
+                  que las personas que más se esfuerzan por destacar.
                 </p>
               </div>
             </div>
@@ -193,32 +199,32 @@ export default function Home(): JSX.Element {
             <h2 className="text-3xl font-bold mb-8">Precios</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Básico</h3>
-                <p className="text-3xl font-bold mb-4">$99/mes</p>
-                <ul className="mb-6">
-                  <li>Característica 1</li>
-                  <li>Característica 2</li>
-                  <li>Característica 3</li>
+                <h3 className="text-xl font-semibold mb-4">Plan Pluton 🔵 </h3>
+                <p className="text-3xl font-bold mb-4">$139/mes</p>
+                <ul className="mb-6 list-disc list-inside">
+                  <li>Publicaciones de los usuarios.</li>
+                  <li>Agendamiento de reuniones.</li>
+                  <li>Ideal de 1 a 75 personas</li>
                 </ul>
                 <ButtonLanding href="/demo" text="Solicitar demo" />
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Pro</h3>
-                <p className="text-3xl font-bold mb-4">$199/mes</p>
-                <ul className="mb-6">
+                <h3 className="text-xl font-semibold mb-4">Plan Saturno 🪐 </h3>
+                <p className="text-3xl font-bold mb-4">$479/mes</p>
+                <ul className="mb-6 list-disc list-inside">
                   <li>Todas las características del Plan Básico</li>
-                  <li>Característica 4</li>
-                  <li>Característica 5</li>
+                  <li>Descuento en el ultimo mes con facturacion anual</li>
+                  <li>Ideal para empresas de 76 a 375 personas</li>
                 </ul>
                 <ButtonLanding href="/demo" text="Solicitar demo" />
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Enterprise</h3>
+                <h3 className="text-xl font-semibold mb-4">Plan Jupyter 🟤</h3>
                 <p className="text-3xl font-bold mb-4">Contactar</p>
-                <ul className="mb-6">
+                <ul className="mb-6 list-disc list-inside">
                   <li>Todas las características del Plan Pro</li>
-                  <li>Soporte 24/7</li>
-                  <li>Personalización completa</li>
+                  <li>Soporte mas exclusivo</li>
+                  <li>ideal para equipos de + 375</li>
                 </ul>
                 <ButtonLanding href="/demo" text="Solicitar demo" />
               </div>
@@ -230,13 +236,31 @@ export default function Home(): JSX.Element {
         <section
           ref={sectionRefs.contacto}
           id="contacto"
-          className={`py-16 px-4 bg-gradient-to-r from-blue-700 via-black to-blue-800 transition-all duration-1000 ease-in-out ${
-            currentSection === "contacto"
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
+          className="py-10 px-8 bg-gradient-to-r from-blue-700 via-black to-blue-800 mt-20" // Añadido mt-20 para mayor separación
         >
-          <div className="container mx-auto">{/* Contenido de contacto */}</div>
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-5">Contáctanos</h2>
+            <div className="mb-4">
+              <p className="text-lg font-medium">WorldKer</p>
+              <p className="text-sm">Cra. 87 #30-65, Medellín, Belén, Medellín, Antioquia (La office)</p>
+              <p className="text-sm">Número de Teléfono: +57 310 7053966</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">
+                  Términos y Condiciones
+                </h3>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Control de Datos</h3>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">
+                  Leyes y Regulaciones
+                </h3>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
