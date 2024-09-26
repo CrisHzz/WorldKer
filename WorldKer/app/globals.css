@@ -19,3 +19,55 @@
   html {
     scroll-behavior: smooth;
   }
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #0c3069, #4070aa, #6893c5,  #93c5fd); 
+}
+
+.form-container {
+  background-color: white;
+  padding: 60px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 450px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 36px; /* Ajusta el tamaño del texto */
+  font-weight: bold; /* Aplica negrita */
+  color: #18055a;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-email {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: #9c9ab9;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.submit-btn:hover {
+  background-color: #5e58af;
+}
