@@ -8,9 +8,10 @@ export default function HeaderLanding() {
   useEffect(() => {
     const handleHashChange = () => {
       const yOffset = -88; // Altura del encabezado
-      const element = document.getElementById(window.location.hash.substring(1));
+      const hash = window.location.hash.substring(1);
+      const element = document.getElementById(hash);
       if (element) {
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     };
@@ -27,9 +28,7 @@ export default function HeaderLanding() {
       <header className="bg-black/5 h-auto sm:h-[88px] w-full flex flex-col sm:flex-row items-center justify-between px-4 border border-white/10 backdrop-blur-[2px]">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <div className="text-white text-lg sm:text-2xl font-figtree font-bold mr-2">
-              Logo
-            </div>
+            <img src="/LogoWorldKer.png" alt="Logo WorldKer" className="h-8 sm:h-14 mr-3" />
             <div className="text-white text-lg sm:text-4xl font-figtree font-bold italic">
               WorldKer
             </div>
