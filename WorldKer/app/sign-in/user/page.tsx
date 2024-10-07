@@ -64,11 +64,13 @@ export default function Login(): JSX.Element {
                   className="w-full h-12 bg-[#e0dede] px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#573b8a]"
                 />
               </div>
+              <Link href='/users-management'>
               <button type="submit" className="w-full h-12 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300">
                 Iniciar Sesión
               </button>
+              </Link>
             </form>
-            <Link href='/users-management'>
+            <Link href='/landing'>
             <button onClick={goBack} className="w-full h-12 mt-4 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300">
               Regresar
             </button>
