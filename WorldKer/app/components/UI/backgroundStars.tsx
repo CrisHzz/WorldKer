@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function backgroundStars({
+export default function BackgroundStars({
   backgroundColor = 'black',
   gradients = [
     { from: 'from-blue-700/50', to: 'to-transparent', scale: 1.2, translateX: '0%', translateY: '0%' },
@@ -10,7 +10,7 @@ export default function backgroundStars({
   opacity = 0.4,
 }) {
   return (
-    <div className={`relative w-full h-screen overflow-hidden bg-${backgroundColor}`}>
+    <div className={`fixed top-0 left-0 w-full h-full bg-${backgroundColor} z-0`}>
       <div className="absolute inset-0" style={{ opacity }}>
         {gradients.map((gradient, index) => (
           <div
@@ -21,6 +21,9 @@ export default function backgroundStars({
             }}
           />
         ))}
+      </div>
+      <div className="relative z-10 min-h-screen">
+        {/* Aquí va el contenido de tu página */}
       </div>
     </div>
   );
