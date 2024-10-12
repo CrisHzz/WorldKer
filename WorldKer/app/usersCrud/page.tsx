@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, RefObject, useState } from "react";
+import Stars from "../components/UI/Stars";
+
 
 
 export default function Home() {
@@ -47,7 +49,8 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black relative overflow-hidden">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-blue-950 relative overflow-hidden">
+      <Stars /> 
       <div className="stars"></div>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start z-10">
         <form className="flex gap-4 bg-white p-6 rounded-lg shadow-md w-full max-w-5xl justify-center" onSubmit={handleSubmit}>
@@ -60,6 +63,7 @@ export default function Home() {
             className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 min-w-[120px]"
             required
           />
+         
           <input
             type="email"
             placeholder="Email"

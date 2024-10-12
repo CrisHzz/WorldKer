@@ -1,0 +1,429 @@
+/* General body styling */
+body {
+    background-image: url('wppr.jpg');
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    width: 100%; 
+    margin: 0; 
+}
+
+/* Home navbar styling */
+.homenavbar {
+    background-color: #94b3f02a; 
+    border-bottom: 1px solid #94b3f02a; 
+    padding: 20px 40px; 
+    height: 80px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226); 
+    position: fixed; 
+    font-size: 20px;
+    width: 100%; 
+    z-index: 1000; 
+  }
+
+.homenavbar ul {
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.logoapp {
+    margin-right: auto; 
+    margin-left: -2%;
+}
+
+.logoapp img {
+    width: 150px; 
+    height: auto;
+    margin-top: -5px;
+}
+
+/* Navigation item styling */
+.nav-item {
+    margin: 0px 5px;
+    margin-top: -5px;
+    
+}
+
+.profile-img  {
+    margin: 0px 15px;
+    margin-top: -5px;
+    
+}
+
+
+
+
+
+
+
+/* Sidebar menu */
+.sidebar {
+    width: 200px;
+    background-color: #94b3f02a;
+    position: fixed;
+    height: 100%;
+    top: 80px;
+    left: 0;
+    padding-top: 80px; 
+    z-index: 100; 
+    overflow-x: hidden; 
+    align-items: center;
+}
+
+
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    
+}
+
+.sidebar ul li {
+    padding: 15px 10px;
+    text-align: left;
+    border-bottom: 1px solid #444; 
+    
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+    display: inline-block;
+}
+
+.sidebar ul li a:hover {
+    
+    color: #d7ccf6;
+}
+
+
+
+/* Profile image styling */
+.profile-img {
+    margin-top: -45px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center; 
+    cursor: pointer;
+    border: 2px solid #d189a5; 
+    transition: transform 0.2s ease-in-out;
+    margin-top: 40px;
+    
+}
+
+.profile-pic:hover {
+    transform: scale(1.1); 
+}
+.person .profile-pic {
+    position: relative;
+    top: 30px; 
+}
+.title {
+    position: relative;
+    top: 10px; 
+    text-decoration: underline;
+}
+.person {
+    position: relative;
+    top: -20px; 
+}
+ 
+
+.sidebar ul li.logout {
+    margin-top: 300px;
+    border-bottom: none; 
+}
+
+ 
+
+
+
+
+
+
+.transparent {
+    width:1400px;
+    background-color: #f094eb00;
+    position: fixed;
+    height: 100%;
+    top: 80px;
+    left: 200px;
+    padding-top: 200px; 
+    z-index: 100; 
+    overflow-x: hidden; 
+}
+
+
+
+
+
+.toprockets {
+    width: 380px;
+    background-color: rgba(171, 169, 169, 0.379);
+    position: fixed;
+    height: 250px;
+    top: 100px;
+    left: 220px;
+    padding-top: 20px;
+    z-index: 100;
+    overflow-x: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(171, 169, 169, 0.379);
+    text-align: center; 
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: -15px;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.name {
+    font-size: 18px;
+    
+}
+
+.rocketsnum {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.rockets {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.personinfo  {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.personinfo li {
+    display: inline-block; 
+    margin-right: 20px; 
+}
+
+.personinfo .profile-pic {
+    
+    margin-bottom: 15px; 
+}
+
+
+
+.icon-rocket {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+   
+}
+
+
+.toprockets .person {
+    margin-bottom: -55px; 
+    margin-left: 20px;
+}
+
+.title {
+    margin-bottom: -20px; 
+}
+
+
+
+
+
+.feed {
+    width:560px;
+    background-color: rgba(0, 0, 0, 0.379);
+    position: fixed;
+    height: 100%;
+    top: 100px;
+    left: 620px;
+    padding-top: 200px; 
+    z-index: 100; 
+    overflow-x: hidden; 
+    border-radius: 10px ;
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    
+}
+
+
+.rockets-container {
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: rgba(106, 95, 182, 0.678);
+    font-size: 24px;
+    font-weight: bold;
+    color: #adc4ec;
+    box-shadow: 5px 5px 10px rgb(48, 41, 101);
+    border-radius: 8px;
+    margin-top: -150px;
+    margin-left: 1100px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rockets-text {
+    margin-right: 20px; 
+  }
+
+
+  .lastf {
+    width: 380px;
+    background-color: rgba(171, 169, 169, 0.379);
+    position: fixed;
+    height: 260px;
+    top: 420px;
+    left: 1200px;
+    padding-top: 20px;
+    z-index: 100;
+    overflow-x: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(171, 169, 169, 0.379);
+    text-align: center; 
+}
+
+.title3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: -15px;
+}
+
+.lastf .person {
+    margin-bottom: -55px; 
+    margin-left: 40px;
+}
+
+
+.title3 {
+    margin-bottom: -25px; 
+}
+
+
+
+
+
+
+.team {
+    width: 380px;
+    background-color: rgba(171, 169, 169, 0.379);
+    position: fixed;
+    height: 300px;
+    top: 420px;
+    left: 220px;
+    padding-top: 20px;
+    z-index: 100;
+    overflow-x: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(171, 169, 169, 0.379);
+    text-align: center; 
+}
+
+.title2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.team .person {
+    margin-bottom: -40px; 
+    margin-left: 40px;
+}
+
+.title2 {
+    margin-bottom: -20px; 
+}
+
+
+
+.calendar {
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: rgba(160, 95, 182, 0.678);
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecade6;
+    box-shadow: 5px 5px 10px rgb(77, 41, 101);
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-left: 1100px;
+    display: flex;
+    align-items: center;
+}
+  
+.calendar-text {
+    margin-right: 20px; 
+}
+.icon-calendar {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+   
+}
+
+.fl{
+    font-weight: bold;
+}
+
+.sidebar .cc{
+    font-weight: bold;
+    padding-left: 100px; 
+    margin-left: -25px;
+}
+
+.sidebar .c1{
+    border-top: 1px solid #444; 
+}
+
+.logout {
+    display: inline-flex; 
+    align-items: center; 
+    font-weight: bold;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+
+
+
+
+.icon-logout {
+    width: 16px;  
+    height: 16px;
+    margin-left: 8px; 
+    filter: brightness(0) invert(1); 
+    font-weight: bold;
+}
