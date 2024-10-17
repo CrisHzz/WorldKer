@@ -247,17 +247,19 @@ export default function Home(): JSX.Element {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4">
-                  Términos y Condiciones
-                </h3>
+              <h3 className="text-xl font-semibold mb-4">
+                <a href="/landing/tyc">Términos y Condiciones</a>
+              </h3>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4">Control de Datos</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                <a href="/landing/data-control">Control de Datos</a>
+              </h3>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4">
-                  Leyes y Regulaciones
-                </h3>
+              <h3 className="text-xl font-semibold mb-4">
+                <a href="/landing/laws">Leyes y Regulaciones</a>
+              </h3>
               </div>
             </div>
           </div>
