@@ -15,6 +15,8 @@ export default function Login(): JSX.Element {
     password: '',
   });
 
+  const router = useRouter();
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
@@ -22,12 +24,52 @@ export default function Login(): JSX.Element {
     });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    console.log(formData); // Aquí iría la lógica para el login
+  const verificarCorreo = async (email: string) => {
+    try {
+      const response = await fetch(`https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/email/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      console.log("Respuesta de la verificación:", response);
+
+
+      if (!response.ok) {
+        throw new Error(`Error al verificar el correo: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error en la verificación:", error);
+      return null; // O algún valor que indique error
+    }
   };
 
-  const router = useRouter();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+
+    // Verificar que el email no esté vacío
+    if (!formData.email) {
+      console.error("El email no puede estar vacío");
+      return;
+    }
+
+    // Llamar a verificarCorreo para verificar el email
+    const data = await verificarCorreo(formData.email);
+
+    if (data && data.success) {
+      console.log("Usuario encontrado:", data);
+      // Redirigir al usuario a la página de inicio si el usuario existe
+      router.push('/users-management');
+    } else {
+      // Mostrar alerta si el usuario no existe
+      alert("El usuario no existe. Por favor, verifica tu correo electrónico.");
+    }
+  };
 
   const goBack = (): void => {
     router.back();
@@ -41,8 +83,8 @@ export default function Login(): JSX.Element {
         <div className="w-[350px] bg-gradient-to-b from-[#302b63] via-[#24243e] to-[#302b63] rounded-lg shadow-2xl overflow-hidden">
           <div className="bg-gray-100 rounded-[20px] p-8 text-center">
             <form onSubmit={handleSubmit} className="space-y-6">
-`              <h2 className="text-[#573b8a] text-3xl font-bold mb-6">Iniciar Sesión <br/> Empresas</h2>
-`              <div>
+              <h2 className="text-[#573b8a] text-3xl font-bold mb-6">Iniciar Sesión <br /> Empresas</h2>
+              <div>
                 <input
                   type="email"
                   name="email"
@@ -64,11 +106,12 @@ export default function Login(): JSX.Element {
                   className="w-full h-12 bg-[#e0dede] px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#573b8a]"
                 />
               </div>
-              <Link href='/company-management'>
-              <button type="submit" className="w-full h-12 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300">
+              <button
+                type="submit"
+                className="w-full h-12 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300"
+              >
                 Iniciar Sesión
               </button>
-              </Link>
             </form>
             <button onClick={goBack} className="w-full h-12 mt-4 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300">
               Regresar

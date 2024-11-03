@@ -11,27 +11,39 @@ interface Company {
 }
 
 export default function CompanyManagement() {
-  const [companies, setCompanies] = useState<Company[]>([
-    { id: 1, name: "Company A", status: "Active" },
-    { id: 2, name: "Company B", status: "Banned" },
-    { id: 3, name: "Company C", status: "Active" },
-  ]);
+  const [companies, setCompanies] = useState<Company[]>([]);
 
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleDelete = (id: number) => {
-    setCompanies(companies.filter((company) => company.id !== id));
-  };
+  const  handleDelete  = async (id: number) => {
 
-  const handleBan = (id: number) => {
-    setCompanies(
-      companies.map((company) =>
-        company.id === id
-          ? { ...company, status: company.status === "Banned" ? "Active" : "Banned" }
-          : company
-      )
-    );
+    const filteredCompanies = companies.filter((company) => company.id === id);
+
+
+
+    try {
+      const response = await fetch(
+        `https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/delete/  `,
+        {
+         method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+         },
+       }
+      );
+
+    const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || JSON.stringify(data));
+      }
+
+      // setCompanies(data);
+      console.log("Empresas obtenidas:", data);
+    } catch (error) {
+      console.error("Error al obtener las empresas:", error);
+    }
   };
 
   const handleLogout = () => {
@@ -42,6 +54,33 @@ export default function CompanyManagement() {
     setSelectedCompany(company);
     setIsModalOpen(true);
   };
+
+  const handleFetchCompanies = async () => {
+    try {
+      const response = await fetch(
+        "https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/get/all",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data);
+      }
+
+      setCompanies(data);
+      console.log("Empresas obtenidas:", data);
+    } catch (error) {
+      console.error("Error al obtener las emmpresas:", error);
+    }
+  };
+
+
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-black">
@@ -66,22 +105,18 @@ export default function CompanyManagement() {
         {/* Aside Menu */}
         <aside className="w-1/4 bg-purple-900/60 rounded-lg shadow-lg p-4 h-[90vh]">
           <h2 className="text-2xl font-bold mb-4">Companies</h2>
-          <ul className="space-y-2">
-            {companies.map((company) => (
-              <li
-                key={company.id}
-                className="hover:bg-purple-600 transition rounded p-2 cursor-pointer"
-                onClick={() => handleCompanyClick(company)}
-              >
-                {company.name}
-              </li>
-            ))}
-          </ul>
+
           <button
             className="mt-4 bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded transition"
             onClick={handleLogout}
           >
             Salir
+          </button>
+          <button
+            className="mt-4 bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded transition ml-2"
+            onClick={handleFetchCompanies}
+          >
+            Ver todas las empreas
           </button>
         </aside>
 
@@ -93,34 +128,38 @@ export default function CompanyManagement() {
           <table className="w-full table-auto border-collapse">
             <thead>
               <tr>
-                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">ID</th>
-                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">Name</th>
-                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">Status</th>
-                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">Actions</th>
+                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">
+                  ID
+                </th>
+                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">
+                  Name
+                </th>
+                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">
+                  Status
+                </th>
+                <th className="border-b-2 border-purple-600 py-2 px-4 text-lg text-left">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {companies.map((company) => (
                 <tr key={company.id} className="hover:bg-purple-600 transition">
-                  <td className="border-b border-purple-600 py-2 px-4 text-left">{company.id}</td>
-                  <td className="border-b border-purple-600 py-2 px-4 text-left">{company.name}</td>
-                  <td className="border-b border-purple-600 py-2 px-4 text-left">{company.status}</td>
+                  <td className="border-b border-purple-600 py-2 px-4 text-left">
+                    {company.id}
+                  </td>
+                  <td className="border-b border-purple-600 py-2 px-4 text-left">
+                    {company.name}
+                  </td>
+                  <td className="border-b border-purple-600 py-2 px-4 text-left">
+                    {company.status}
+                  </td>
                   <td className="border-b border-purple-600 py-2 px-4 text-left">
                     <button
                       className="mr-4 bg-red-600 hover:bg-red-800 text-white py-1 px-3 rounded transition"
                       onClick={() => handleDelete(company.id)}
                     >
                       Delete
-                    </button>
-                    <button
-                      className={`${
-                        company.status === "Banned"
-                          ? "bg-green-600"
-                          : "bg-yellow-500"
-                      } hover:bg-opacity-80 text-white py-1 px-3 rounded transition`}
-                      onClick={() => handleBan(company.id)}
-                    >
-                      {company.status === "Banned" ? "Unban" : "Ban"}
                     </button>
                   </td>
                 </tr>

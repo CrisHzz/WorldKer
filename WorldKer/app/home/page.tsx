@@ -8,6 +8,7 @@ export default function page() {
         {/* Add children content here */}
         <div>Content goes here</div>
       </PlatformHeader>
+      
     </div>
   )
 }
