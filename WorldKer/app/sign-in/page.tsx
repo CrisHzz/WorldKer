@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Stars from "@/app/components/UI/Stars";
 import BackgroundStars from "@/app/components/UI/backgroundStars";
 
@@ -20,19 +20,19 @@ const ChooseLogin: React.FC = () => {
         </h1>
         <div className="flex gap-8">
           <button
-            onClick={() => handleRedirect('/sign-in/company')}
+            onClick={() => handleRedirect("/sign-in/company")}
             className="px-8 py-4 text-xl bg-[#573b8a] text-white rounded-md hover:bg-[#6d44b8] transition-colors duration-200"
           >
             Empresa
           </button>
           <button
-            onClick={() => handleRedirect('/sign-in/user')}
+            onClick={() => handleRedirect("/sign-in/user")}
             className="px-8 py-4 text-xl bg-[#573b8a] text-white rounded-md hover:bg-[#6d44b8] transition-colors duration-200"
           >
             Usuario
           </button>
           <button
-            onClick={() => handleRedirect('/sign-in/admin')}
+            onClick={() => handleRedirect("/sign-in/admin")}
             className="px-8 py-4 text-xl bg-[#573b8a] text-white rounded-md hover:bg-[#6d44b8] transition-colors duration-200"
           >
             Admin

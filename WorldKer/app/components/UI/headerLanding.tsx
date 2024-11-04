@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ButtonLanding from "./buttonLanding";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function HeaderLanding() {
   const pathname = usePathname();

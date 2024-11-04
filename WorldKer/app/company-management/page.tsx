@@ -47,7 +47,6 @@ export default function CompanyManagement() {
     }
   };
 
-
   const handleLogout = () => {
     window.location.href = "/landing"; // Redirige a la página de inicio
   };
@@ -71,13 +70,10 @@ export default function CompanyManagement() {
       }
 
       setCompanies(data);
-      console.log("Empresas obtenidas:", data);
     } catch (error) {
       console.error("Error al obtener las emmpresas:", error);
     }
   };
-
-
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-black">

@@ -1,25 +1,25 @@
 "use client";
 
-import React, { useEffect, useState } from 'react'
-import PlatformHeader from '@/app/components/UI/platformHeader'
-import { Loader } from 'lucide-react'
+import React, { useEffect, useState } from "react";
+import PlatformHeader from "@/app/components/UI/platformHeader";
+import { Loader } from "lucide-react";
 
 interface Post {
-  id: number
-  title: string
-  body: string
+  id: number;
+  title: string;
+  body: string;
   // Agrega más propiedades según sea necesario
 }
 
 export default function Page() {
-  const [data, setData] = useState<Post[] | null>(null)
+  const [data, setData] = useState<Post[] | null>(null);
 
   useEffect(() => {
-    fetch('https://worlderk.onrender.com/post')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error))
-  }, [])
+    fetch("https://worlderk.onrender.com/post")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   return (
     <div>
@@ -27,8 +27,13 @@ export default function Page() {
         <div className="p-4 flex flex-wrap gap-4">
           {data ? (
             data.map((item, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-lg p-4 shadow-md w-full md:w-1/3">
-                <pre className="whitespace-pre-wrap break-words text-black">{JSON.stringify(item, null, 2)}</pre>
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-lg p-4 shadow-md w-full md:w-1/3"
+              >
+                <pre className="whitespace-pre-wrap break-words text-black">
+                  {JSON.stringify(item, null, 2)}
+                </pre>
               </div>
             ))
           ) : (
@@ -40,5 +45,5 @@ export default function Page() {
         </div>
       </PlatformHeader>
     </div>
-  )
+  );
 }

@@ -48,8 +48,6 @@ export default function SignUp(): JSX.Element {
       if (!response.ok) {
         throw new Error(data);
       }
-
-      console.log("Datos del formulario enviados:", data);
       setMessage("Empresa creada exitosamente.");
       // Redirigir a la página principal después de un breve retraso
       setTimeout(() => {

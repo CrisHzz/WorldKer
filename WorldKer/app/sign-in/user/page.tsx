@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, ChangeEvent, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import Stars from "@/app/components/UI/Stars";
 import BackgroundStars from "@/app/components/UI/backgroundStars";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Login(): JSX.Element {
-  const [formData, setFormData] = useState<{ email: string; password: string }>({
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState<{ email: string; password: string }>(
+    {
+      email: "",
+      password: "",
+    }
+  );
 
   const router = useRouter();
 
@@ -24,14 +26,12 @@ export default function Login(): JSX.Element {
   const verificarCorreo = async (email: string) => {
     try {
       const response = await fetch(`https://worlderk.onrender.com/user/auth`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password: formData.password }),
       });
-
-      console.log('Respuesta del servidor:', JSON.stringify({ email, password: formData.password }));
 
       if (!response.ok) {
         throw new Error(`Error al verificar el correo: ${response.statusText}`);
@@ -57,11 +57,10 @@ export default function Login(): JSX.Element {
     const data = await verificarCorreo(formData.email);
 
     if (data && data.success) {
-      console.log("Usuario encontrado:", data);
       // Guardar el email en localStorage
-      localStorage.setItem('userEmail', formData.email);
+      localStorage.setItem("userEmail", formData.email);
       // Redirigir al usuario a la página de inicio si el usuario existe
-      router.push('/home');
+      router.push("/home");
     } else {
       // Mostrar alerta si el usuario no existe
       alert("Usuario o contraseña incorrectos.");
@@ -81,7 +80,8 @@ export default function Login(): JSX.Element {
           <div className="bg-gray-100 rounded-[20px] p-8 text-center">
             <form onSubmit={handleSubmit} className="space-y-6">
               <h2 className="text-[#573b8a] text-3xl font-bold mb-6">
-                Iniciar Sesión <br />Usuarios
+                Iniciar Sesión <br />
+                Usuarios
               </h2>
               <div>
                 <input
@@ -112,7 +112,7 @@ export default function Login(): JSX.Element {
                 Iniciar Sesión
               </button>
             </form>
-            <Link href='/landing'>
+            <Link href="/landing">
               <button
                 onClick={goBack}
                 className="w-full h-12 mt-4 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300"

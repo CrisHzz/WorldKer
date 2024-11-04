@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const UserRegistrationForm: React.FC = () => {
-  const [userEmail, setUserEmail] = useState('');
-  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           to: userEmail,
-          subject: 'Registro de Usuario',
+          subject: "Registro de Usuario",
           htmlContent: `<p>¡Bienvenido, ${userName}!</p>`,
         }),
       });
@@ -25,15 +25,20 @@ const UserRegistrationForm: React.FC = () => {
       const result = await response.json();
       alert(result.message);
     } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Error enviando el correo');
+      console.error("Error sending email:", error);
+      alert("Error enviando el correo");
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="userEmail" className="block text-sm font-medium text-gray-700">Email del Usuario:</label>
+        <label
+          htmlFor="userEmail"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Email del Usuario:
+        </label>
         <input
           type="email"
           id="userEmail"
@@ -44,7 +49,12 @@ const UserRegistrationForm: React.FC = () => {
         />
       </div>
       <div>
-        <label htmlFor="userName" className="block text-sm font-medium text-gray-700">Nombre del Usuario:</label>
+        <label
+          htmlFor="userName"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Nombre del Usuario:
+        </label>
         <input
           type="text"
           id="userName"

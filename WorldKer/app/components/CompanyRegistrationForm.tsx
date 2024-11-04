@@ -1,37 +1,42 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const CompanyRegistrationForm: React.FC = () => {
-  const [companyEmail, setCompanyEmail] = useState('');
-  const [companyName, setCompanyName] = useState('');
+  const [companyEmail, setCompanyEmail] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
+
+    const response = await fetch("/api/send-email", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         to: companyEmail,
-        subject: '¡Bienvenido a nuestro sistema!',
+        subject: "¡Bienvenido a nuestro sistema!",
         htmlContent: `<p>Gracias por registrarte, ${companyName}!</p>`,
       }),
     });
 
     if (response.ok) {
-      alert('Correo enviado!');
+      alert("Correo enviado!");
     } else {
-      alert('Error enviando el correo');
+      alert("Error enviando el correo");
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="companyEmail" className="block text-sm font-medium text-gray-700">Email de la Empresa:</label>
+        <label
+          htmlFor="companyEmail"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Email de la Empresa:
+        </label>
         <input
           type="email"
           id="companyEmail"
@@ -42,7 +47,12 @@ const CompanyRegistrationForm: React.FC = () => {
         />
       </div>
       <div>
-        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">Nombre de la Empresa:</label>
+        <label
+          htmlFor="companyName"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Nombre de la Empresa:
+        </label>
         <input
           type="text"
           id="companyName"

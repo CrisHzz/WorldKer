@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const Stars = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,16 +13,16 @@ const Stars = () => {
     const fragment = document.createDocumentFragment();
 
     const createStar = () => {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      
+      const star = document.createElement("div");
+      star.classList.add("star");
+
       star.style.top = `${Math.min(Math.random() * 100, 99)}%`;
       star.style.left = `${Math.min(Math.random() * 100, 99)}%`;
-      
-      const size = Math.random() * 2 + 1; 
+
+      const size = Math.random() * 2 + 1;
       star.style.width = `${size}px`;
       star.style.height = `${size}px`;
-      
+
       star.style.animationDuration = `${Math.random() * 3 + 2}s`;
       return star;
     };
@@ -34,13 +34,13 @@ const Stars = () => {
     container.appendChild(fragment);
 
     return () => {
-      container.innerHTML = '';
+      container.innerHTML = "";
     };
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="absolute inset-0 overflow-hidden pointer-events-none"
       style={{ zIndex: 0 }}
     />

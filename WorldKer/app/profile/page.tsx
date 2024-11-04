@@ -68,7 +68,9 @@ export default function Profile() {
             </div>
             <div className="bg-gray-800/80 p-4 rounded-lg shadow-md">
               <h2 className="text-lg font-semibold text-white mb-2">Bio</h2>
-              <div className="text-white bg-gray-900/60 p-2 rounded">{profileData.bio}</div>
+              <div className="text-white bg-gray-900/60 p-2 rounded">
+                {profileData.bio}
+              </div>
             </div>
             {/* Estadísticas Generales */}
             <div className="bg-gray-800/80 p-4 rounded-lg shadow-md space-y-2">

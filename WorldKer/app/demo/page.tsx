@@ -21,10 +21,6 @@ export default function Demo() {
     event.preventDefault();
 
     const serial = generateUniqueSerial();
-    console.log("Enviando correo a:", email);
-    console.log("Seriales generados:", serials);
-    
-
 
     try {
       const response = await fetch("https://worlderk.onrender.com/email/send", {
@@ -40,7 +36,6 @@ export default function Demo() {
       });
 
       const data = await response.json();
-      console.log("Respuesta del servidor:", data);
 
       if (response.ok) {
         alert("Correo enviado exitosamente");

@@ -109,7 +109,6 @@ export default function Home() {
     }
   };
 
-
   const handleUpdateUser = async (id: string) => {
     const updatedUser = { name, email, company, idNumber, password };
 

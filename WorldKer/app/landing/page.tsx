@@ -242,25 +242,27 @@ export default function Home(): JSX.Element {
             <h2 className="text-3xl font-bold mb-5">Contáctanos</h2>
             <div className="mb-4">
               <p className="text-lg font-medium">WorldKer</p>
-              <p className="text-sm">Cra. 87 #30-65, Medellín, Belén, Medellín, Antioquia (La office)</p>
+              <p className="text-sm">
+                Cra. 87 #30-65, Medellín, Belén, Medellín, Antioquia (La office)
+              </p>
               <p className="text-sm">Número de Teléfono: +57 310 7053966</p>
               <p>C</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <div>
-              <h3 className="text-xl font-semibold mb-4">
-                <a href="/landing/tyc">Términos y Condiciones</a>
-              </h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  <a href="/landing/tyc">Términos y Condiciones</a>
+                </h3>
               </div>
               <div>
-              <h3 className="text-xl font-semibold mb-4">
-                <a href="/landing/data-control">Control de Datos</a>
-              </h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  <a href="/landing/data-control">Control de Datos</a>
+                </h3>
               </div>
               <div>
-              <h3 className="text-xl font-semibold mb-4">
-                <a href="/landing/laws">Leyes y Regulaciones</a>
-              </h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  <a href="/landing/laws">Leyes y Regulaciones</a>
+                </h3>
               </div>
             </div>
           </div>

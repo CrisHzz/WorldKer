@@ -88,7 +88,9 @@ export default function PoliticaLegal() {
           Términos y Condiciones de Uso
         </h1>
         <p className="text-base md:text-lg leading-relaxed mb-6 text-justify text-gray-300">
-          En cumplimiento con la legislación colombiana, WorldKer se rige por los siguientes términos. Al utilizar esta plataforma, los usuarios aceptan las siguientes condiciones:
+          En cumplimiento con la legislación colombiana, WorldKer se rige por
+          los siguientes términos. Al utilizar esta plataforma, los usuarios
+          aceptan las siguientes condiciones:
         </p>
 
         <ol className="list-decimal list-inside text-gray-300 space-y-6">
@@ -105,7 +107,8 @@ export default function PoliticaLegal() {
         </ol>
 
         <p className="text-base md:text-lg mt-8 text-center">
-          Al participar en esta comunidad, los usuarios aceptan estos términos y se comprometen a cumplir con la legislación colombiana vigente.
+          Al participar en esta comunidad, los usuarios aceptan estos términos y
+          se comprometen a cumplir con la legislación colombiana vigente.
         </p>
       </main>
     </div>
