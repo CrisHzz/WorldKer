@@ -28,13 +28,12 @@ export default function SignUp(): JSX.Element {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/create",
+        `https://worlderk.onrender.com/user/get/machetazo/${formData.email}`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
         }
       );
 

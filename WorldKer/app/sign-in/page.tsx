@@ -31,6 +31,12 @@ const ChooseLogin: React.FC = () => {
           >
             Usuario
           </button>
+          <button
+            onClick={() => handleRedirect('/sign-in/admin')}
+            className="px-8 py-4 text-xl bg-[#573b8a] text-white rounded-md hover:bg-[#6d44b8] transition-colors duration-200"
+          >
+            Admin
+          </button>
         </div>
       </div>
     </div>

@@ -1,15 +1,57 @@
+"use client";
+
 import BackgroundStars from "@/app/components/UI/backgroundStars";
 import Stars from "@/app/components/UI/Stars";
 import { LogOut, Rocket, Settings, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 interface DashboardLayoutProps {
   children: ReactNode;
 }
 
+
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+
+  const [profileData, setProfileData] = useState({
+    name: "",
+    email: "",
+    bio: "",
+    rocketsReceived: 0,
+    followers: 0,
+    following: 0,
+    available_rockets: 0,
+  });
+
+  useEffect(() => {
+    const email = localStorage.getItem("userEmail");
+    if (email) {
+      fetch(`https://worlderk.onrender.com/user/get/machetazo/${email}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setProfileData({
+            name: data.data.name || "",
+            email: data.data.email || "",
+            bio: data.data.bio || "",
+            rocketsReceived: data.data.rockets_received || {},
+            followers: data.data.followers || 0,
+            following: data.data.following || 0,
+            available_rockets: data.data.available_rockets || 0,
+          });
+        })
+        .catch((error) => console.error("Error fetching profile data:", error));
+    } else {
+      console.error("No email found in localStorage");
+    }
+  }, []);
+
+
   return (
     <div className="relative min-h-screen flex flex-col text-white">
       {/* Background Elements */}
@@ -44,7 +86,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </li>
             <li className="flex items-center space-x-2">
               <Rocket size={24} />
-              <span className="font-bold">Rockets: API</span>
+              <span className="font-bold">Rockets: {profileData.available_rockets}</span>
             </li>
             <li>
               <Link href="/profile">
@@ -63,7 +105,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="/home"
                   className="flex items-center space-x-2 p-2 rounded hover:bg-primary/30 transition"
                 >
                   <Rocket size={18} />

@@ -16,49 +16,46 @@ export default function CompanyManagement() {
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const  handleDelete  = async (id: number) => {
-
+  const handleDelete = async (id: number) => {
     const filteredCompanies = companies.filter((company) => company.id === id);
-
-
 
     try {
       const response = await fetch(
-        `https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/delete/  `,
+        `https://worlderk.onrender.com/api/v1/cruds/company/${filteredCompanies[0].id}`,
         {
-         method: "DELETE",
+          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-         },
-       }
+          },
+        }
       );
 
-    const data = await response.json();
+      // Verificar si la respuesta tiene contenido antes de analizarla como JSON
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
 
       if (!response.ok) {
         throw new Error(data.message || JSON.stringify(data));
       }
 
-      // setCompanies(data);
-      console.log("Empresas obtenidas:", data);
+      // Actualizar la lista de empresas después de la eliminación
+      setCompanies((prevCompanies) =>
+        prevCompanies.filter((company) => company.id !== id)
+      );
     } catch (error) {
-      console.error("Error al obtener las empresas:", error);
+      console.error("Error al eliminar la empresa:", error);
     }
   };
+
 
   const handleLogout = () => {
     window.location.href = "/landing"; // Redirige a la página de inicio
   };
 
-  const handleCompanyClick = (company: Company) => {
-    setSelectedCompany(company);
-    setIsModalOpen(true);
-  };
-
   const handleFetchCompanies = async () => {
     try {
       const response = await fetch(
-        "https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/get/all",
+        "https://worlderk.onrender.com/api/v1/cruds/company/get/all",
         {
           method: "GET",
           headers: {

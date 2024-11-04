@@ -26,7 +26,7 @@ export default function Demo() {
 
 
     try {
-      const response = await fetch("https://undefinedprojectbackend.onrender.com/email/send", {
+      const response = await fetch("https://worlderk.onrender.com/email/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

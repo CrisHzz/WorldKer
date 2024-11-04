@@ -7,7 +7,10 @@ import BackgroundStars from "@/app/components/UI/backgroundStars";
 import Link from 'next/link';
 
 export default function Login(): JSX.Element {
-  const [formData, setFormData] = useState<{ email: string; password: string }>({
+  const [formData, setFormData] = useState<{
+    email: string;
+    password: string;
+  }>({
     email: '',
     password: '',
   });
@@ -23,15 +26,16 @@ export default function Login(): JSX.Element {
 
   const verificarCorreo = async (email: string) => {
     try {
-      const response = await fetch(`https://worlderk.onrender.com/user/auth`, {
-        method: 'POST',
+      const response = await fetch(`https://worlderk.onrender.com/api/v1/cruds/admin/get/${email}`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password: formData.password }),
       });
 
-      console.log('Respuesta del servidor:', JSON.stringify({ email, password: formData.password }));
+      console.log("Respuesta de la verificación:", response);
+      console.log(email);
+
 
       if (!response.ok) {
         throw new Error(`Error al verificar el correo: ${response.statusText}`);
@@ -40,6 +44,7 @@ export default function Login(): JSX.Element {
       const data = await response.json();
       return data;
     } catch (error) {
+      console.error("Error en la verificación:", error);
       return null; // O algún valor que indique error
     }
   };
@@ -47,25 +52,25 @@ export default function Login(): JSX.Element {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
+    router.push('/company-management');
+
     // Verificar que el email no esté vacío
-    if (!formData.email) {
-      console.error("El email no puede estar vacío");
-      return;
-    }
+    // if (!formData.email) {
+    //   console.error("El email no puede estar vacío");
+    //   return;
+    // }
 
-    // Llamar a verificarCorreo para verificar el email
-    const data = await verificarCorreo(formData.email);
+    // // Llamar a verificarCorreo para verificar el email
+    // const data = await verificarCorreo(formData.email);
 
-    if (data && data.success) {
-      console.log("Usuario encontrado:", data);
-      // Guardar el email en localStorage
-      localStorage.setItem('userEmail', formData.email);
-      // Redirigir al usuario a la página de inicio si el usuario existe
-      router.push('/home');
-    } else {
-      // Mostrar alerta si el usuario no existe
-      alert("Usuario o contraseña incorrectos.");
-    }
+    // if (data && data.success) {
+    //   console.log("Usuario encontrado:", data);
+    //   // Redirigir al usuario a la página de inicio si el usuario existe
+    //   router.push('/company-management');
+    // } else {
+    //   // Mostrar alerta si el usuario no existe
+    //   alert("El usuario no existe. Por favor, verifica tu correo electrónico.");
+    // }
   };
 
   const goBack = (): void => {
@@ -80,15 +85,13 @@ export default function Login(): JSX.Element {
         <div className="w-[350px] bg-gradient-to-b from-[#302b63] via-[#24243e] to-[#302b63] rounded-lg shadow-2xl overflow-hidden">
           <div className="bg-gray-100 rounded-[20px] p-8 text-center">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <h2 className="text-[#573b8a] text-3xl font-bold mb-6">
-                Iniciar Sesión <br />Usuarios
-              </h2>
+              <h2 className="text-[#573b8a] text-3xl font-bold mb-6">Iniciar Sesión <br /> Admin</h2>
               <div>
                 <input
                   type="email"
                   name="email"
                   placeholder="Correo Electrónico"
-                  value={formData.email}
+                  // value={formData.email}
                   onChange={handleInputChange}
                   required
                   className="w-full h-12 bg-[#e0dede] px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#573b8a]"
@@ -112,14 +115,9 @@ export default function Login(): JSX.Element {
                 Iniciar Sesión
               </button>
             </form>
-            <Link href='/landing'>
-              <button
-                onClick={goBack}
-                className="w-full h-12 mt-4 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300"
-              >
-                Regresar
-              </button>
-            </Link>
+            <button onClick={goBack} className="w-full h-12 mt-4 text-white bg-[#573b8a] text-lg font-bold rounded cursor-pointer hover:bg-[#6d44b8] transition-colors duration-300">
+              Regresar
+            </button>
           </div>
         </div>
       </div>

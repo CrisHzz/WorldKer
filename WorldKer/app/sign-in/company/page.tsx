@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Stars from "@/app/components/UI/Stars";
 import BackgroundStars from "@/app/components/UI/backgroundStars";
 import Link from 'next/link';
+import { log } from 'console';
 
 export default function Login(): JSX.Element {
   const [formData, setFormData] = useState<{
@@ -26,16 +27,15 @@ export default function Login(): JSX.Element {
 
   const verificarCorreo = async (email: string) => {
     try {
-      const response = await fetch(`https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/email/`, {
+      const response = await fetch(`https://worlderk.onrender.com/api/v1/cruds/company/get/email/${email}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
       });
 
       console.log("Respuesta de la verificación:", response);
-
+      console.log(response.ok);
 
       if (!response.ok) {
         throw new Error(`Error al verificar el correo: ${response.statusText}`);
@@ -52,8 +52,8 @@ export default function Login(): JSX.Element {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    // Verificar que el email no esté vacío
-    if (!formData.email) {
+    // Verificar que formData esté definido y tenga la propiedad email
+    if (!formData || !formData.email) {
       console.error("El email no puede estar vacío");
       return;
     }
@@ -61,7 +61,11 @@ export default function Login(): JSX.Element {
     // Llamar a verificarCorreo para verificar el email
     const data = await verificarCorreo(formData.email);
 
-    if (data && data.success) {
+
+    console.log("Datos de la verificación:", data);
+
+
+    if (data) {
       console.log("Usuario encontrado:", data);
       // Redirigir al usuario a la página de inicio si el usuario existe
       router.push('/users-management');

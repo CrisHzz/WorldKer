@@ -109,6 +109,36 @@ export default function Home() {
     }
   };
 
+
+  const handleUpdateUser = async (id: string) => {
+    const updatedUser = { name, email, company, idNumber, password };
+
+    try {
+      const response = await fetch(
+        `https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/update/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedUser),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data);
+      }
+
+      console.log("Usuario actualizado:", data);
+      // Actualizar la lista de usuarios después de la actualización
+      handleFetchUsers();
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <BackgroundStars />
