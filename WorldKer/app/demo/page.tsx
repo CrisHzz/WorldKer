@@ -23,6 +23,7 @@ export default function Demo() {
     const serial = generateUniqueSerial();
     console.log("Enviando correo a:", email);
     console.log("Seriales generados:", serials);
+    
 
 
     try {
