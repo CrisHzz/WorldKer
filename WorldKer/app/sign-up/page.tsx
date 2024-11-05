@@ -27,16 +27,27 @@ export default function SignUp(): JSX.Element {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      // const response = await fetch(
+      //   `https://worlderk.onrender.com/user/get/machetazo/${formData.email}`,
+      //   {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+
+
       const response = await fetch(
-        `https://worlderk.onrender.com/user/get/machetazo/${formData.email}`,
+        "https://worlderk.onrender.com/api/v1/cruds/company/create",
         {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify(formData),
         }
       );
-
       let data;
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {

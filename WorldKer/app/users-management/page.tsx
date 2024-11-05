@@ -27,7 +27,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "https://undefinedprojectbackend.onrender.com/user/create",
+        "https://worlderk.onrender.com/user/create",
         {
           method: "POST",
           headers: {
@@ -87,7 +87,7 @@ export default function Home() {
   const handleFetchUsers = async () => {
     try {
       const response = await fetch(
-        "https://undefinedprojectbackend.onrender.com/user/get/all",
+        "https://worlderk.onrender.com/user/get/all",
         {
           method: "GET",
           headers: {
@@ -114,7 +114,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        `https://undefinedprojectbackend.onrender.com/api/v1/cruds/company/update/${id}`,
+        `https://worlderk.onrender.com/api/v1/cruds/company/update/${id}`,
         {
           method: "PUT",
           headers: {
