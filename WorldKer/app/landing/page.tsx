@@ -246,7 +246,6 @@ export default function Home(): JSX.Element {
                 Cra. 87 #30-65, Medellín, Belén, Medellín, Antioquia (La office)
               </p>
               <p className="text-sm">Número de Teléfono: +57 310 7053966</p>
-              <p>C</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <div>
