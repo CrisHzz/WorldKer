@@ -2,7 +2,7 @@
 
 import BackgroundStars from "@/app/components/UI/backgroundStars";
 import Stars from "@/app/components/UI/Stars";
-import { LogOut, Rocket, Settings, User } from "lucide-react";
+import { LogOut, Rocket, Settings, User, Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
@@ -11,9 +11,7 @@ interface DashboardLayoutProps {
   children: ReactNode;
 }
 
-
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-
   const [profileData, setProfileData] = useState({
     name: "",
     email: "",
@@ -23,6 +21,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     following: 0,
     available_rockets: 0,
   });
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const email = localStorage.getItem("userEmail");
@@ -51,7 +51,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     }
   }, []);
 
-
   return (
     <div className="relative min-h-screen flex flex-col text-white">
       {/* Background Elements */}
@@ -64,10 +63,16 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <nav className="bg-primary/20 border-b border-primary/20 backdrop-blur-sm absolute top-0 left-0 w-full h-16 px-4 flex items-center z-50">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/LogoWorldKer.png" alt="Logo" width={120} height={40} />
+            <Image src="/LogoWorldKer.png" alt="Logo" width={80} height={30} />
             <span className="text-xl font-bold">WorldKer</span>
           </Link>
-          <ul className="flex items-center space-x-4">
+          <button
+            className="md:hidden text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu size={24} />
+          </button>
+          <ul className={`flex items-center space-x-4 ${isMenuOpen ? 'block' : 'hidden'} md:flex`}>
             <li>
               <Link
                 href="/home"
@@ -78,7 +83,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </li>
             <li>
               <Link
-                href="/landing"
+                href="/home/about"
                 className="hover:text-primary-foreground transition"
               >
                 About

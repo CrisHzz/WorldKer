@@ -62,7 +62,7 @@ export default function SignUp(): JSX.Element {
       setMessage("Empresa creada exitosamente.");
       // Redirigir a la página principal después de un breve retraso
       setTimeout(() => {
-        router.push("/home");
+        router.push("/sign-in/company");
       }, 2000);
     } catch (error) {
       console.error("Error al enviar los datos del formulario:", error);
