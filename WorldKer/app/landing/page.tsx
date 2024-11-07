@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
         if (element) {
           const yOffset = -100;
           const y =
-            element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            element.getBoundingClientRect().top + window.scrollY + yOffset;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
       }
@@ -75,7 +75,7 @@ export default function Home(): JSX.Element {
       });
       observer.disconnect();
     };
-  }, [sectionRefs]);
+  }, []);
 
   return (
     <div className="relative w-full overflow-hidden bg-black">
