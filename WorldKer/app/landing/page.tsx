@@ -75,7 +75,7 @@ export default function Home(): JSX.Element {
       });
       observer.disconnect();
     };
-  }, []);
+  }, [sectionRefs]);
 
   return (
     <div className="relative w-full overflow-hidden bg-black">

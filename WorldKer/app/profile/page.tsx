@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { User, Mail, Rocket, Users, UserPlus, Edit2, Save } from "lucide-react";
 import PlatformHeader from "@/app/components/UI/platformHeader";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+
 
 export default function Profile() {
   const [profileData, setProfileData] = useState({
@@ -30,7 +33,7 @@ export default function Profile() {
         .then((response) => response.json())
         .then((data) => {
           // Asegurarse de que data.data existe y es un objeto
-          if (data?.data && typeof data.data === 'object') {
+          if (data?.data && typeof data.data === "object") {
             setProfileData({
               id: String(data.data.id || ""),
               name: String(data.data.name || ""),
@@ -87,10 +90,14 @@ export default function Profile() {
                 <div className="p-6">
                   <div className="flex items-center gap-4">
                     <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center text-2xl font-bold">
-                      {profileData.name ? String(profileData.name).charAt(0) : ''}
+                      {profileData.name
+                        ? String(profileData.name).charAt(0)
+                        : ""}
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold">{String(profileData.name)}</h2>
+                      <h2 className="text-2xl font-bold">
+                        {String(profileData.name)}
+                      </h2>
                       <p className="text-gray-400 flex items-center">
                         <Mail className="w-4 h-4 mr-2" />
                         {String(profileData.email)}
@@ -121,7 +128,9 @@ export default function Profile() {
                         </div>
                       ) : (
                         <div className="flex justify-between items-start">
-                          <p className="text-gray-300">{String(profileData.bio) || "No hay biografía aún."}</p>
+                          <p className="text-gray-300">
+                            {String(profileData.bio) || "No hay biografía aún."}
+                          </p>
                           <button
                             onClick={() => setIsEditing(true)}
                             className="text-blue-400 hover:text-blue-300"
@@ -135,17 +144,25 @@ export default function Profile() {
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <Rocket className="w-8 h-8 mx-auto mb-2 text-yellow-400" />
-                        <p className="text-2xl font-bold">{Number(profileData.rocketsReceived)}</p>
-                        <p className="text-sm text-gray-400">Rockets Recibidos</p>
+                        <p className="text-2xl font-bold">
+                          {Number(profileData.rocketsReceived)}
+                        </p>
+                        <p className="text-sm text-gray-400">
+                          Rockets Recibidos
+                        </p>
                       </div>
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <Users className="w-8 h-8 mx-auto mb-2 text-blue-400" />
-                        <p className="text-2xl font-bold">{Number(profileData.followers)}</p>
+                        <p className="text-2xl font-bold">
+                          {Number(profileData.followers)}
+                        </p>
                         <p className="text-sm text-gray-400">Seguidores</p>
                       </div>
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <UserPlus className="w-8 h-8 mx-auto mb-2 text-green-400" />
-                        <p className="text-2xl font-bold">{Number(profileData.following)}</p>
+                        <p className="text-2xl font-bold">
+                          {Number(profileData.following)}
+                        </p>
                         <p className="text-sm text-gray-400">Siguiendo</p>
                       </div>
                     </div>
@@ -154,7 +171,9 @@ export default function Profile() {
               </div>
               <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-6">
                 <h3 className="text-xl font-bold mb-4">Mis Posts</h3>
-                <p className="text-gray-400">Aquí se mostrarán tus posts recientes.</p>
+                <p className="text-gray-400">
+                  Aquí se mostrarán tus posts recientes.
+                </p>
               </div>
             </div>
             <div>
@@ -164,12 +183,22 @@ export default function Profile() {
                   Mis Rockets
                 </h3>
                 <div className="text-center">
-                  <p className="text-5xl font-bold text-yellow-400">{Number(profileData.available_rockets)}</p>
+                  <p className="text-5xl font-bold text-yellow-400">
+                    {Number(profileData.available_rockets)}
+                  </p>
                   <p className="text-gray-400 mt-2">Rockets Disponibles</p>
                 </div>
                 <button className="w-full mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded">
                   Enviar un Rocket
                 </button>
+              </div>
+              <div className="mt-6 bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-6">
+                <h3 className="text-xl font-bold mb-4">Calendario</h3>
+                <Calendar
+                  className="bg-gray-800 text-black border-gray-700 rounded-lg"
+                  tileClassName="text-black hover:bg-gray-700"
+                  locale="es-ES"
+                />
               </div>
             </div>
           </div>

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ButtonLanding from "./buttonLanding";
 import Link from "next/link";
+import Image from 'next/image';
+
 
 export default function HeaderLanding() {
   const pathname = usePathname();
@@ -31,7 +33,7 @@ export default function HeaderLanding() {
         <div className="flex items-center justify-between w-full">
           <Link href="/">
             <div className="flex items-center">
-              <img
+              <Image
                 src="/LogoWorldKer.png"
                 alt="Logo WorldKer"
                 className="h-8 sm:h-14 mr-3"
@@ -80,7 +82,7 @@ export default function HeaderLanding() {
                 <li>
                 <Link href="/landing">
                 <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
-                  <img
+                  <Image
                   src="/spain.png"
                   alt="SPAIN Flag"
                   className="w-8 h-8 object-cover"
@@ -91,7 +93,7 @@ export default function HeaderLanding() {
                 <li>
                 <Link href="/landing/EN">
                 <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
-                  <img
+                  <Image
                   src="/usa.png"
                   alt="USA Flag"
                   className="w-8 h-8 object-cover"
