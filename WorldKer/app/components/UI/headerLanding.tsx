@@ -41,55 +41,77 @@ export default function HeaderLanding() {
               </div>
             </div>
           </Link>
-          {pathname === "/landing" && (
+            {(pathname === "/landing" || pathname === "/landing/EN") && (
             <div className="flex flex-col sm:flex-row items-center justify-center w-full mt-2 sm:mt-0">
               <div className="flex-grow flex justify-center">
-                <div className="flex space-x-4">
-                  <a
-                    href="#nosotros"
-                    className="relative text-white hover:text-blue-300 font-figtree font-bold group"
-                  >
-                    Sobre Nosotros
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                  </a>
-                  <a
-                    href="#pilares"
-                    className="relative text-white hover:text-blue-300 font-figtree font-bold group"
-                  >
-                    Nuestros Pilares
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                  </a>
-                  <a
-                    href="#precios"
-                    className="relative text-white hover:text-blue-300 font-figtree font-bold group"
-                  >
-                    Precios
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                  </a>
-                  <a
-                    href="#contacto"
-                    className="relative text-white hover:text-blue-300 font-figtree font-bold group"
-                  >
-                    Contacto
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                  </a>
-                </div>
+              <div className="flex space-x-4">
+                <a
+                href="#nosotros"
+                className="relative text-white hover:text-blue-300 font-figtree font-bold group"
+                >
+                {pathname === "/landing" ? "Sobre Nosotros" : "About Us"}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a
+                href="#pilares"
+                className="relative text-white hover:text-blue-300 font-figtree font-bold group"
+                >
+                {pathname === "/landing" ? "Nuestros Pilares" : "Our Pillars"}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a
+                href="#precios"
+                className="relative text-white hover:text-blue-300 font-figtree font-bold group"
+                >
+                {pathname === "/landing" ? "Precios" : "Pricing"}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a
+                href="#contacto"
+                className="relative text-white hover:text-blue-300 font-figtree font-bold group"
+                >
+                {pathname === "/landing" ? "Contacto" : "Contact"}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+              </div>
               </div>
               <nav className="mt-2 sm:mt-0">
-                <ul className="flex space-x-4">
-                  <li>
-                    <ButtonLanding href="/demo" text="Solicitar una demo" />
-                  </li>
-                  <li>
-                    <ButtonLanding href="/sign-in" text="Iniciar sesión" />
-                  </li>
-                  <li>
-                    <ButtonLanding href="/sign-up" text="Registrarse" />
-                  </li>
-                </ul>
+              <ul className="flex space-x-4">
+                <li>
+                <Link href="/landing">
+                <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <img
+                  src="/spain.png"
+                  alt="SPAIN Flag"
+                  className="w-8 h-8 object-cover"
+                  />
+                </button>
+                </Link>
+                </li>
+                <li>
+                <Link href="/landing/EN">
+                <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <img
+                  src="/usa.png"
+                  alt="USA Flag"
+                  className="w-8 h-8 object-cover"
+                  />
+                </button>
+                </Link>
+                </li>
+                <li>
+                <ButtonLanding href="/demo" text={pathname === "/landing" ? "Solicitar una demo" : "Request a demo"} />
+                </li>
+                <li>
+                <ButtonLanding href="/sign-in" text={pathname === "/landing" ? "Iniciar sesión" : "Sign in"} />
+                </li>
+                <li>
+                <ButtonLanding href="/sign-up" text={pathname === "/landing" ? "Registrarse" : "Sign up"} />
+                </li>
+              </ul>
               </nav>
             </div>
-          )}
+            )}
         </div>
       </header>
     </div>

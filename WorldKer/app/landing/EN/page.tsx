@@ -111,24 +111,22 @@ export default function Home(): JSX.Element {
         >
           <div className="container mx-auto flex flex-col justify-center flex-1 space-y-6">
             <h2 className="text-4xl md:text-6xl lg:text-[90px] font-bold mb-8 text-center md:text-left">
-              ¡Alcanza el <br />
-              Universo
-              <br /> en tu <br />
-              Empresa!
+              Reach the <br />
+              Universe
+              <br /> in your <br />
+              Company!
             </h2>
             <p className="text-[20px] leading-relaxed text-center md:text-left">
-              Somos una <span className="font-bold">Red Social</span>{" "}
-              empresarial diseñada exclusivamente para conectar a los miembros
-              de tu empresa. Aquí, la colaboración y el crecimiento profesional
-              encuentran su mejor espacio. La retroalimentación constante y una
-              comunicación fluida son esenciales para crecer. Al compartir
-              experiencias diarias, los empleados aprenden unos de otros,
-              celebran logros y dan una
-              <span className="font-bold"> identidad cultural</span> única a la
-              empresa.
+              We are a corporate <span className="font-bold">Social Network</span>{" "}
+              exclusively designed to connect members of your company. Here,
+              collaboration and professional growth find their best space.
+              Constant feedback and fluid communication are essential for growth.
+              By sharing daily experiences, employees learn from each other,
+              celebrate achievements and give the company a unique
+              <span className="font-bold"> cultural identity</span>.
             </p>
             <div className="text-center md:text-left">
-              <ButtonLanding href="/sign-up" text="Subete al cohete" />
+              <ButtonLanding href="/sign-up" text="Hop on the rocket" />
             </div>
           </div>
           <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
@@ -147,39 +145,37 @@ export default function Home(): JSX.Element {
           }`}
         >
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Nuestros Pilares</h2>
+            <h2 className="text-3xl font-bold mb-8">Our Pillars</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-4">
-                  Alcanza el exito 🚀{" "}
-                </h3>
-                <p>
-                  Gracias a la forma de interactuar tus empleados podran
-                  <span className="font-bold"> destacarse </span> entre si
-                  usando los superlikes, aquellos que tengan un mejor
-                  rendimiento o hagan buenas acciones saldran en la pestaña de
-                  destacados.
-                </p>
+          <h3 className="text-xl font-semibold mb-4">
+            Reach Success 🚀{" "}
+          </h3>
+          <p>
+            Thanks to the way of interacting, your employees will be able to
+            <span className="font-bold"> stand out </span> among themselves
+            using superlikes. Those who have better performance or do good
+            actions will appear in the featured tab.
+          </p>
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-4">Social 🤝 </h3>
-                <p>
-                  Tus empleados podran mejorar sus habilidades sociales y
-                  conocer a sus compañeros de trabajo de una manera mas
-                  personal, veran lo que hacen en su dia a dia o quizas ver como
-                  van avazando en su camino hacia el exito empresarial.
-                </p>
+          <h3 className="text-xl font-semibold mb-4">Social 🤝 </h3>
+          <p>
+            Your employees will be able to improve their social skills and
+            get to know their coworkers in a more personal way. They'll see
+            what they do in their daily lives or maybe see how they're
+            progressing on their path to business success.
+          </p>
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
-                <h3 className="text-xl font-semibold mb-4">Diverso ♾️</h3>
-                <p>
-                  Nuestro software brinda una propuesta abierta a cualquier
-                  <span className="font-bold"> identidad empresarial</span>{" "}
-                  haciendo que sea fácil su inclusión con cualquiera, la
-                  personalización de perfiles y nuestro identificativo de{" "}
-                  <span className="font-bold">superlikes (Cohetes)</span> hace
-                  que las personas que más se esfuerzan por destacar.
-                </p>
+          <h3 className="text-xl font-semibold mb-4">Diverse ♾️</h3>
+          <p>
+            Our software provides an open proposal to any
+            <span className="font-bold"> business identity</span>,
+            making it easy to include anyone. Profile customization and our
+            <span className="font-bold"> superlikes (Rockets)</span> feature
+            helps those who strive the most to stand out.
+          </p>
               </div>
             </div>
           </div>
@@ -196,37 +192,37 @@ export default function Home(): JSX.Element {
           }`}
         >
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Precios</h2>
+            <h2 className="text-3xl font-bold mb-8">Pricing</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Pluton 🔵 </h3>
-                <p className="text-3xl font-bold mb-4">$139/mes</p>
-                <ul className="mb-6 list-disc list-inside">
-                  <li>Publicaciones de los usuarios.</li>
-                  <li>Agendamiento de reuniones.</li>
-                  <li>Ideal de 1 a 75 personas</li>
-                </ul>
-                <ButtonLanding href="/demo" text="Solicitar demo" />
+          <h3 className="text-xl font-semibold mb-4">Pluto Plan 🔵 </h3>
+          <p className="text-3xl font-bold mb-4">$139/month</p>
+          <ul className="mb-6 list-disc list-inside">
+            <li>User posts</li>
+            <li>Meeting scheduling</li>
+            <li>Ideal for 1 to 75 people</li>
+          </ul>
+          <ButtonLanding href="/demo" text="Request demo" />
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Saturno 🪐 </h3>
-                <p className="text-3xl font-bold mb-4">$479/mes</p>
-                <ul className="mb-6 list-disc list-inside">
-                  <li>Todas las características del Plan Básico</li>
-                  <li>Descuento en el ultimo mes con facturacion anual</li>
-                  <li>Ideal para empresas de 76 a 375 personas</li>
-                </ul>
-                <ButtonLanding href="/demo" text="Solicitar demo" />
+          <h3 className="text-xl font-semibold mb-4">Saturn Plan 🪐 </h3>
+          <p className="text-3xl font-bold mb-4">$479/month</p>
+          <ul className="mb-6 list-disc list-inside">
+            <li>All Basic Plan features</li>
+            <li>Last month discount with annual billing</li>
+            <li>Ideal for companies with 76 to 375 people</li>
+          </ul>
+          <ButtonLanding href="/demo" text="Request demo" />
               </div>
               <div className="bg-blue-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Plan Jupyter 🟤</h3>
-                <p className="text-3xl font-bold mb-4">Contactar</p>
-                <ul className="mb-6 list-disc list-inside">
-                  <li>Todas las características del Plan Pro</li>
-                  <li>Soporte mas exclusivo</li>
-                  <li>ideal para equipos de + 375</li>
-                </ul>
-                <ButtonLanding href="/demo" text="Solicitar demo" />
+          <h3 className="text-xl font-semibold mb-4">Jupiter Plan 🟤</h3>
+          <p className="text-3xl font-bold mb-4">Contact us</p>
+          <ul className="mb-6 list-disc list-inside">
+            <li>All Pro Plan features</li>
+            <li>Premium support</li>
+            <li>Ideal for teams of 375+</li>
+          </ul>
+          <ButtonLanding href="/demo" text="Request demo" />
               </div>
             </div>
           </div>
@@ -236,36 +232,36 @@ export default function Home(): JSX.Element {
         <section
           ref={sectionRefs.contacto}
           id="contacto"
-          className="py-10 px-8 bg-gradient-to-r from-blue-700 via-black to-blue-800 mt-20" // Añadido mt-20 para mayor separación
+          className="py-10 px-8 bg-gradient-to-r from-blue-700 via-black to-blue-800 mt-20"
         >
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-5">Contáctanos</h2>
+            <h2 className="text-3xl font-bold mb-5">Contact Us</h2>
             <div className="mb-4">
               <p className="text-lg font-medium">WorldKer</p>
               <p className="text-sm">
-                Cra. 87 #30-65, Medellín, Belén, Medellín, Antioquia (La office)
+          87th Street #30-65, Medellín, Belén, Medellín, Antioquia (The office)
               </p>
-                <p className="text-sm">
-                <a href="https://wa.link/minhup" className="hover:underline">
-                  Número de Teléfono: +57 310 7053966
-                </a>
-                </p>
+              <p className="text-sm">
+          <a href="https://wa.link/minhup" className="hover:underline">
+            Phone Number: +57 310 7053966
+          </a>
+              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4">
-                  <a href="/landing/tyc">Términos y Condiciones</a>
-                </h3>
+          <h3 className="text-xl font-semibold mb-4">
+            <a href="/landing/tyc">Terms and Conditions</a>
+          </h3>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4">
-                  <a href="/landing/data-control">Control de Datos</a>
-                </h3>
+          <h3 className="text-xl font-semibold mb-4">
+            <a href="/landing/data-control">Data Control</a>
+          </h3>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4">
-                  <a href="/landing/laws">Leyes y Regulaciones</a>
-                </h3>
+          <h3 className="text-xl font-semibold mb-4">
+            <a href="/landing/laws">Laws and Regulations</a>
+          </h3>
               </div>
             </div>
           </div>
