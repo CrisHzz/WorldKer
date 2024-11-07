@@ -163,7 +163,8 @@ export default function Home(): JSX.Element {
               <div className="bg-blue-800/50 p-6 rounded-lg flex flex-col justify-between">
                 <h3 className="text-xl font-semibold mb-4">Social 🤝 </h3>
                 <p>
-                  Your employees will be able to improve their social skills and
+                  Your employees will be able to
+                   improve their social skills and
                   get to know their coworkers in a more personal way. They&apos;ll
                   see what they do in their daily lives or maybe see how they&apos;re
                   progressing on their path to business success.

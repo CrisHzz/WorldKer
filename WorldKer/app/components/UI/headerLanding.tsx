@@ -36,6 +36,8 @@ export default function HeaderLanding() {
               <Image
                 src="/LogoWorldKer.png"
                 alt="Logo WorldKer"
+                width={56}
+                height={56}
                 className="h-8 sm:h-14 mr-3"
               />
               <div className="text-white text-lg sm:text-4xl font-figtree font-bold italic">
@@ -85,6 +87,8 @@ export default function HeaderLanding() {
                   <Image
                   src="/spain.png"
                   alt="SPAIN Flag"
+                  width={32}
+                  height={32}
                   className="w-8 h-8 object-cover"
                   />
                 </button>
@@ -96,6 +100,8 @@ export default function HeaderLanding() {
                   <Image
                   src="/usa.png"
                   alt="USA Flag"
+                  width={32}
+                  height={32}
                   className="w-8 h-8 object-cover"
                   />
                 </button>

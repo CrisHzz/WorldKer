@@ -2,7 +2,7 @@
 
 import BackgroundStars from "@/app/components/UI/backgroundStars";
 import Stars from "@/app/components/UI/Stars";
-import { LogOut, Rocket, Settings, User, Menu } from "lucide-react";
+import { LogOut, Rocket, Users, User, Menu,AppWindow,StickyNote,UserPen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
@@ -113,17 +113,35 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   href="/home"
                   className="flex items-center space-x-2 p-2 rounded hover:bg-primary/30 transition"
                 >
-                  <Rocket size={18} />
+                  <AppWindow size={18} />
                   <span>Dashboard</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/team"
                   className="flex items-center space-x-2 p-2 rounded hover:bg-primary/30 transition"
                 >
-                  <Settings size={18} />
-                  <span>Settings</span>
+                  <Users size={18} />
+                  <span>My Team</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/profile"
+                  className="flex items-center space-x-2 p-2 rounded hover:bg-primary/30 transition"
+                >
+                  <UserPen size={18} />
+                  <span>Profile</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/home/post"
+                  className="flex items-center space-x-2 p-2 rounded hover:bg-primary/30 transition"
+                >
+                  <StickyNote size={18} />
+                  <span>Create a post</span>
                 </Link>
               </li>
               <li>
