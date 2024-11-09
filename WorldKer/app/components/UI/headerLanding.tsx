@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ButtonLanding from "./buttonLanding";
 import Link from "next/link";
-import Image from 'next/image';
-
+import Image from "next/image";
 
 export default function HeaderLanding() {
   const pathname = usePathname();
@@ -45,7 +44,9 @@ export default function HeaderLanding() {
               </div>
             </div>
           </Link>
-            {(pathname === "/landing" || pathname === "/landing/EN") && (
+            {(pathname === "/landing" ||
+            pathname === "/landing/EN" ||
+            pathname === "/landing/PT") && (
             <div className="flex flex-col sm:flex-row items-center justify-center w-full mt-2 sm:mt-0">
               <div className="flex-grow flex justify-center">
               <div className="flex space-x-4">
@@ -53,28 +54,44 @@ export default function HeaderLanding() {
                 href="#nosotros"
                 className="relative text-white hover:text-blue-300 font-figtree font-bold group"
                 >
-                {pathname === "/landing" ? "Sobre Nosotros" : "About Us"}
+                {pathname === "/landing" 
+                  ? "Sobre Nosotros" 
+                  : pathname === "/landing/PT"
+                  ? "Sobre Nós"
+                  : "About Us"}
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a
                 href="#pilares"
                 className="relative text-white hover:text-blue-300 font-figtree font-bold group"
                 >
-                {pathname === "/landing" ? "Nuestros Pilares" : "Our Pillars"}
+                {pathname === "/landing"
+                  ? "Nuestros Pilares"
+                  : pathname === "/landing/PT"
+                  ? "Nossos Pilares"
+                  : "Our Pillars"}
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a
                 href="#precios"
                 className="relative text-white hover:text-blue-300 font-figtree font-bold group"
                 >
-                {pathname === "/landing" ? "Precios" : "Pricing"}
+                {pathname === "/landing" 
+                  ? "Precios" 
+                  : pathname === "/landing/PT"
+                  ? "Preços"
+                  : "Pricing"}
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a
                 href="#contacto"
                 className="relative text-white hover:text-blue-300 font-figtree font-bold group"
                 >
-                {pathname === "/landing" ? "Contacto" : "Contact"}
+                {pathname === "/landing" 
+                  ? "Contacto" 
+                  : pathname === "/landing/PT"
+                  ? "Contato"
+                  : "Contact"}
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
               </div>
@@ -83,38 +100,78 @@ export default function HeaderLanding() {
               <ul className="flex space-x-4">
                 <li>
                 <Link href="/landing">
-                <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
                   <Image
-                  src="/spain.png"
-                  alt="SPAIN Flag"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-cover"
+                    src="/spain.png"
+                    alt="SPAIN Flag"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-cover"
                   />
-                </button>
+                  </button>
+                </Link>
+                </li>
+                <li>
+                <Link href="/landing/PT">
+                  <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <Image
+                    src="/portugal.png"
+                    alt="portugal Flag"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-cover"
+                  />
+                  </button>
                 </Link>
                 </li>
                 <li>
                 <Link href="/landing/EN">
-                <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
                   <Image
-                  src="/usa.png"
-                  alt="USA Flag"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-cover"
+                    src="/usa.png"
+                    alt="USA Flag"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-cover"
                   />
-                </button>
+                  </button>
                 </Link>
                 </li>
                 <li>
-                <ButtonLanding href="/demo" text={pathname === "/landing" ? "Solicitar una demo" : "Request a demo"} />
+                <ButtonLanding
+                  href="/demo"
+                  text={
+                  pathname === "/landing"
+                    ? "Solicitar una demo"
+                    : pathname === "/landing/PT"
+                    ? "Solicitar uma demo"
+                    : "Request a demo"
+                  }
+                />
                 </li>
                 <li>
-                <ButtonLanding href="/sign-in" text={pathname === "/landing" ? "Iniciar sesión" : "Sign in"} />
+                <ButtonLanding
+                  href="/sign-in"
+                  text={
+                  pathname === "/landing" 
+                    ? "Iniciar sesión" 
+                    : pathname === "/landing/PT"
+                    ? "Iniciar sessão"
+                    : "Sign in"
+                  }
+                />
                 </li>
                 <li>
-                <ButtonLanding href="/sign-up" text={pathname === "/landing" ? "Registrarse" : "Sign up"} />
+                <ButtonLanding
+                  href="/sign-up"
+                  text={
+                  pathname === "/landing" 
+                    ? "Registrarse" 
+                    : pathname === "/landing/PT"
+                    ? "Registrar-se"
+                    : "Sign up"
+                  }
+                />
                 </li>
               </ul>
               </nav>

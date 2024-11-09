@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import PlatformHeader from "@/app/components/UI/platformHeader";
-import { Loader } from "lucide-react";
+import { Loader,ThumbsUp,Rocket } from "lucide-react";
 
 interface Post {
   likesCount: string;
@@ -21,9 +21,30 @@ export default function Page() {
   useEffect(() => {
     fetch("https://worlderk.onrender.com/post")
       .then((response) => response.json())
-      .then((data) => setData(data.filter((post: Post) => post.content && post.content.trim() !== '')))
+      .then((data) =>
+        setData(
+          data.filter(
+            (post: Post) => post.content && post.content.trim() !== ""
+          )
+        )
+      )
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  const handleLike = (postId: string) => {
+    if (data) {
+      const updatedData = data.map((post) => {
+        if (post.id === postId) {
+          return {
+            ...post,
+            likesCount: (parseInt(post.likesCount) + 1).toString(),
+          };
+        }
+        return post;
+      });
+      setData(updatedData);
+    }
+  };
 
   return (
     <div>
@@ -37,9 +58,9 @@ export default function Page() {
               >
                 <div className="flex flex-col gap-2">
                   {post.mediaUrl && (
-                    <img 
-                      src={post.mediaUrl} 
-                      alt="Post media" 
+                    <img
+                      src={post.mediaUrl}
+                      alt="Post media"
                       className="w-full h-48 object-cover rounded"
                     />
                   )}
@@ -50,6 +71,23 @@ export default function Page() {
                   <p className="text-black text-sm">
                     Created: {new Date(post.createdAt).toLocaleDateString()}
                   </p>
+                  <button
+                    onClick={() => handleLike(post.id)}
+                    className="flex items-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                  >
+                    <ThumbsUp className="w-4 h-4 mr-2" />
+                    Like
+                  </button>
+                    <button
+                    onClick={() => {
+                      alert("Se ha enviado un rocket a ese usuario");
+                      handleLike(post.id);
+                    }}
+                    className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-200"
+                    >
+                    <Rocket className="w-4 h-4 mr-2" />
+                    Send a rocket
+                    </button>
                 </div>
               </div>
             ))

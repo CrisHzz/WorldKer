@@ -8,6 +8,9 @@ import BackgroundStars from "@/app/components/UI/backgroundStars";
 export default function Demo() {
   const [email, setEmail] = useState("");
   const [serials, setSerials] = useState<number[]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  const plans = ["Plutón", "Saturno", "Júpiter"];
 
   const generateUniqueSerial = () => {
     let serial;
@@ -20,6 +23,11 @@ export default function Demo() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    
+    if (!selectedPlan) {
+      alert("Por favor seleccione un plan");
+      return;
+    }
 
     const serial = generateUniqueSerial();
 
@@ -32,7 +40,7 @@ export default function Demo() {
         body: JSON.stringify({
           to: email,
           subject: "Business Demo Series",
-          body: `Serial: ${serial}`,
+          body: `Serial: ${serial}\nPlan seleccionado: ${selectedPlan}`,
         }),
       });
 
@@ -70,6 +78,22 @@ export default function Demo() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+          </div>
+          <div className="flex gap-2 justify-center">
+            {plans.map((plan) => (
+              <button
+                key={plan}
+                type="button"
+                onClick={() => setSelectedPlan(plan)}
+                className={`px-4 py-2 rounded-lg transition duration-300 ${
+                  selectedPlan === plan
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                }`}
+              >
+                {plan}
+              </button>
+            ))}
           </div>
           <button
             type="submit"

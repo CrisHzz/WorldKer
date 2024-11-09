@@ -9,14 +9,15 @@ import ButtonLanding from "@/app/components/UI/buttonLanding"
 import { Mail, Lock, Building, CreditCard, Key, ArrowRight } from 'lucide-react'
 
 export default function SignUp(): JSX.Element {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     email: "",
     password: "",
     name: "",
     nit: "",
     serial: "",
-  })
+  }
 
+  const [formData, setFormData] = useState(initialFormData)
   const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
 
@@ -50,6 +51,7 @@ export default function SignUp(): JSX.Element {
         throw new Error(data)
       }
       setMessage("Empresa creada exitosamente.")
+      setFormData(initialFormData) // Resetear el formulario después de un registro exitoso
       setTimeout(() => {
         router.push("/sign-in/company")
       }, 2000)
