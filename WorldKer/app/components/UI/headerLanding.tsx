@@ -46,7 +46,7 @@ export default function HeaderLanding() {
           </Link>
             {(pathname === "/landing" ||
             pathname === "/landing/EN" ||
-            pathname === "/landing/PT") && (
+            pathname === "/landing/PT" || pathname === "/landing/RS") && (
             <div className="flex flex-col sm:flex-row items-center justify-center w-full mt-2 sm:mt-0">
               <div className="flex-grow flex justify-center">
               <div className="flex space-x-4">
@@ -125,6 +125,19 @@ export default function HeaderLanding() {
                 </Link>
                 </li>
                 <li>
+                <Link href="/landing/RS">
+                  <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
+                  <Image
+                    src="/rusia.png"
+                    alt="USA Flag"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-cover"
+                  />
+                  </button>
+                </Link>
+                </li>
+                 <li>
                 <Link href="/landing/EN">
                   <button className="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-gray-700/50 transition-colors duration-300">
                   <Image
@@ -137,6 +150,7 @@ export default function HeaderLanding() {
                   </button>
                 </Link>
                 </li>
+                
                 <li>
                 <ButtonLanding
                   href="/demo"

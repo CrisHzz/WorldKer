@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react'
 import { UserCircle, Building2, Loader2 } from 'lucide-react'
 import PlatformHeader from '@/app/components/UI/platformHeader'
-import BackgroundStars from '@/app/components/UI/backgroundStars'
-import Stars from '@/app/components/UI/Stars'
 
 interface User {
   name: string
