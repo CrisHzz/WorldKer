@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import PlatformHeader from "@/app/components/UI/platformHeader";
-import { Loader,ThumbsUp,Rocket } from "lucide-react";
+import { Loader, ThumbsUp, Rocket, Trash } from "lucide-react";
 
 interface Post {
   likesCount: string;
@@ -46,6 +46,22 @@ export default function Page() {
     }
   };
 
+  const handleDelete = async (postId: string) => {
+    try {
+      const response = await fetch(`https://worlderk.onrender.com/post/${postId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setData((prevData) => prevData?.filter((post) => post.id !== postId) || null);
+      } else {
+        console.error("Failed to delete post");
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
   return (
     <div>
       <PlatformHeader>
@@ -78,16 +94,23 @@ export default function Page() {
                     <ThumbsUp className="w-4 h-4 mr-2" />
                     Like
                   </button>
-                    <button
+                  <button
                     onClick={() => {
                       alert("Se ha enviado un rocket a ese usuario");
                       handleLike(post.id);
                     }}
-                    className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-200"
-                    >
+                    className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+                  >
                     <Rocket className="w-4 h-4 mr-2" />
                     Send a rocket
-                    </button>
+                  </button>
+                  <button
+                    onClick={() => handleDelete(post.id)}
+                    className="flex items-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-2"
+                  >
+                    <Trash className="w-4 h-4 mr-2" />
+                    Delete
+                  </button>
                 </div>
               </div>
             ))

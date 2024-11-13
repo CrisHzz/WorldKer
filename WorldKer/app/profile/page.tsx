@@ -6,6 +6,12 @@ import PlatformHeader from "@/app/components/UI/platformHeader";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
+interface Post {
+  id: string;
+  content: string;
+  userId: string;
+  createdAt: string;
+}
 
 export default function Profile() {
   const [profileData, setProfileData] = useState({
@@ -20,6 +26,7 @@ export default function Profile() {
   });
   const [editableBio, setEditableBio] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [userPosts, setUserPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const email = localStorage.getItem("userEmail");
@@ -32,7 +39,6 @@ export default function Profile() {
       })
         .then((response) => response.json())
         .then((data) => {
-          // Asegurarse de que data.data existe y es un objeto
           if (data?.data && typeof data.data === "object") {
             setProfileData({
               id: String(data.data.id || ""),
@@ -53,12 +59,21 @@ export default function Profile() {
     }
   }, []);
 
+  useEffect(() => {
+    fetch("https://worlderk.onrender.com/post")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredPosts = data.filter((post: Post) => post.userId === "915");
+        setUserPosts(filteredPosts);
+      })
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
   const handleBioChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEditableBio(e.target.value);
   };
 
   const handleBioSave = () => {
-    // Asegurarse de que el ID es una cadena válida
     if (!profileData.id) return;
 
     fetch(`https://worlderk.onrender.com/user/update/${profileData.id}`, {
@@ -80,6 +95,29 @@ export default function Profile() {
       .catch((error) => console.error("Error updating bio:", error));
   };
 
+  const handleLevelUp = () => {
+    if (!profileData.id) return;
+
+    const updatedRockets = profileData.available_rockets + 5;
+
+    fetch(`https://worlderk.onrender.com/user/update/${profileData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ available_rockets: updatedRockets }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProfileData((prevData) => ({
+          ...prevData,
+          available_rockets: updatedRockets,
+        }));
+        console.log("Rockets increased successfully:", data);
+      })
+      .catch((error) => console.error("Error updating rockets:", error));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <PlatformHeader>
@@ -90,14 +128,10 @@ export default function Profile() {
                 <div className="p-6">
                   <div className="flex items-center gap-4">
                     <div className="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center text-2xl font-bold">
-                      {profileData.name
-                        ? String(profileData.name).charAt(0)
-                        : ""}
+                      {profileData.name ? String(profileData.name).charAt(0) : ""}
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold">
-                        {String(profileData.name)}
-                      </h2>
+                      <h2 className="text-2xl font-bold">{String(profileData.name)}</h2>
                       <p className="text-gray-400 flex items-center">
                         <Mail className="w-4 h-4 mr-2" />
                         {String(profileData.email)}
@@ -144,25 +178,17 @@ export default function Profile() {
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <Rocket className="w-8 h-8 mx-auto mb-2 text-yellow-400" />
-                        <p className="text-2xl font-bold">
-                          {Number(profileData.rocketsReceived)}
-                        </p>
-                        <p className="text-sm text-gray-400">
-                          Rockets Recibidos
-                        </p>
+                        <p className="text-2xl font-bold">{Number(profileData.rocketsReceived)}</p>
+                        <p className="text-sm text-gray-400">Rockets Recibidos</p>
                       </div>
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <Users className="w-8 h-8 mx-auto mb-2 text-blue-400" />
-                        <p className="text-2xl font-bold">
-                          {Number(profileData.followers)}
-                        </p>
+                        <p className="text-2xl font-bold">{Number(profileData.followers)}</p>
                         <p className="text-sm text-gray-400">Seguidores</p>
                       </div>
                       <div className="bg-gray-700 p-4 rounded-lg">
                         <UserPlus className="w-8 h-8 mx-auto mb-2 text-green-400" />
-                        <p className="text-2xl font-bold">
-                          {Number(profileData.following)}
-                        </p>
+                        <p className="text-2xl font-bold">{Number(profileData.following)}</p>
                         <p className="text-sm text-gray-400">Siguiendo</p>
                       </div>
                     </div>
@@ -171,9 +197,18 @@ export default function Profile() {
               </div>
               <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-6">
                 <h3 className="text-xl font-bold mb-4">Mis Posts</h3>
-                <p className="text-gray-400">
-                  Aquí se mostrarán tus posts recientes.
-                </p>
+                {userPosts.length > 0 ? (
+                  userPosts.map((post) => (
+                    <div key={post.id} className="bg-gray-700 p-4 rounded-lg mb-4">
+                      <p className="text-gray-300 mb-2">{post.content}</p>
+                      <p className="text-gray-400 text-sm">
+                        Publicado: {new Date(post.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-400">No tienes posts recientes.</p>
+                )}
               </div>
             </div>
             <div>
@@ -188,8 +223,11 @@ export default function Profile() {
                   </p>
                   <p className="text-gray-400 mt-2">Rockets Disponibles</p>
                 </div>
-                <button className="w-full mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded">
-                  Enviar un Rocket
+                <button
+                  onClick={handleLevelUp}
+                  className="w-full mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded"
+                >
+                  Sube de nivel (+5) 🚀
                 </button>
               </div>
               <div className="mt-6 bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-6">

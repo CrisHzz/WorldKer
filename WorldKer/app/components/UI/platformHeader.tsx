@@ -81,14 +81,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 Home
               </Link>
             </li>
-            <li>
-              <Link
-                href="/home/about"
-                className="hover:text-primary-foreground transition"
-              >
-                About
-              </Link>
-            </li>
             <li className="flex items-center space-x-2">
               <Rocket size={24} />
               <span className="font-bold">Rockets: {profileData.available_rockets}</span>
